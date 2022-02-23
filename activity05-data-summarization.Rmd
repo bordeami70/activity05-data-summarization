@@ -1,6 +1,6 @@
 ---
 title: "Activity 5"
-author: "Name"
+author: "Michael Bordeaux"
 output: github_document
 ---
 
@@ -25,7 +25,7 @@ We read in the same data from Activity 4 below, but notice that this code is now
 Compare this code output to the `load_data` chunk in your knitted Activity 4 `.md` report.
 What does enclosing an assignment code (i.e., `object_name <- r_code`) in parentheses do?
 
-**Response**:
+**Response**:surrounding code in parenthesis will print it after executing.
 
 
 ### Data Codebook
@@ -79,6 +79,11 @@ There are a number of ways to create a code chunk:
 Below, create a code chunk and name it `median_earnings`.
 Make sure there is an empty line above and below the code chunk.
 
+```{r median_earnings}
+median_all_majors <- summarize(college_recent_grads,sum_median = median(median))
+
+median_all_majors
+```
 
 
 In your newly created R code chunk, verify that the median income for all majors was $36,000.
@@ -95,12 +100,25 @@ Be careful when you name your output summaries as we are dealing with things tha
 When I and obtaining numerical summaries for variables, I like to include the variable name in my summary name (e.g., `mean_med_earnings = mean(median)`).
 Create a code chunk and name it `summary_earnings`.
 
+```{r summary_earnings}
+sum_info <- college_recent_grads %>% 
+  summarise(
+    count = n(),
+    mean_info = mean(median),
+    standinfo = sd(median),
+    min_info = min(median),
+    med_info = median(median),
+    max_info = max(median)
+  )
+sum_info
+
+```
 
 
 Provide a discussion on what you believe the distribution of median earnings will look like.
 You should discuss the center, spread, and potential shape only using these values - I do NOT want to see any data visualizations here.
 
-**Response**:
+**Response**: unsure
 
 
 ### Median Earnings by Major Category
